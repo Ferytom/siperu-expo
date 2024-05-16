@@ -18,7 +18,7 @@ export default function RegisterForm() {
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [rememberMe, setRememberMe] = useState(false)
+  const [isFormValid, setIsFormValid] = useState(true)
 
   const handleRegister = async () => {
     setIsLoading(true)
@@ -29,7 +29,9 @@ export default function RegisterForm() {
       password === ''
     ) {
       console.error('Email or password not filled')
-      return null
+      setIsFormValid(false)
+      setIsLoading(false)
+      return
     }
 
     try {
@@ -52,21 +54,12 @@ export default function RegisterForm() {
       if (getData.status === 200) {
         const results = await getData.json()
         console.log(results)
-        router.replace('/login')
+        router.push('/quiz')
       }
     } catch (error) {
       console.error(error)
     }
     router.replace('/login')
-  }
-
-  const handleRememberMe = () => {
-    setRememberMe(!rememberMe)
-  }
-
-  const handleForgotPassword = () => {
-    // Handle forgot password logic here
-    console.log('Forgot password')
   }
 
   return (
@@ -125,6 +118,14 @@ export default function RegisterForm() {
             {isLoading ? <ActivityIndicator /> : 'Daftar'}
           </Text>
         </TouchableOpacity>
+
+        {isFormValid ? (
+          ''
+        ) : (
+          <Text style={styles.label}>
+            Email or password not filled
+          </Text>
+        )}
       </View>
 
       <TouchableOpacity

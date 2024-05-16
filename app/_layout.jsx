@@ -70,6 +70,17 @@ export default function RootLayout() {
           }}
         />
         <Stack.Screen
+          name='result'
+          // component={Register}
+          options={{
+            headerTransparent: true,
+            title: '',
+            headerRight: (props) => <LogoTitle {...props} />,
+            statusBarHidden: true,
+            headerBackVisible: false,
+          }}
+        />
+        <Stack.Screen
           name='login'
           // component={Login}
           options={{

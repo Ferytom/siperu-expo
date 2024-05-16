@@ -49,7 +49,7 @@ export default function RegisterScreen() {
           Daftar sekarang dan Belajar Lebih Seru!
         </Text>
 
-        <Link href='/quiz' asChild>
+        <Link href='/registerForm' asChild>
           <TouchableOpacity
             style={styles.button}
             onPress={handleLogin}>

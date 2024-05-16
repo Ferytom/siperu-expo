@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
-import { View, Text, Button, StyleSheet } from 'react-native'
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native'
 import { useRouter } from 'expo-router'
+import { LinearGradient } from 'expo-linear-gradient'
 
 import { questions } from '../constants/Questions'
 
@@ -16,7 +23,6 @@ export default function QuizScreen() {
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion)
     } else {
-      // Calculate the result
       const result = calculateResult(answers)
       router.push(`/result?result=${result}`)
     }
@@ -39,30 +45,61 @@ export default function QuizScreen() {
   }
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={['#0F2BAC', '#22006C']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.container}>
+      <Text style={styles.title}>Tes Gaya Belajar VAK</Text>
       <Text style={styles.question}>
+        {questions[currentQuestion].id}
+        {'. '}
         {questions[currentQuestion].question}
       </Text>
       {questions[currentQuestion].answers.map((answer, index) => (
-        <Button
+        <TouchableOpacity
           key={index}
-          title={answer.text}
-          onPress={() => handleAnswer(answer.id)}
-        />
+          style={styles.answerButton}
+          onPress={() => handleAnswer(answer.id)}>
+          <Text style={styles.answerText}>{answer.text}</Text>
+        </TouchableOpacity>
       ))}
-    </View>
+    </LinearGradient>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#012060',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
   },
+  title: {
+    fontSize: 32,
+    color: 'white',
+    textAlign: 'center',
+    marginBottom: 20,
+    paddingHorizontal: 20,
+  },
   question: {
     fontSize: 18,
+    color: 'white',
+    textAlign: 'center',
     marginBottom: 20,
+    paddingHorizontal: 20,
+  },
+  answerButton: {
+    backgroundColor: '#FFD700',
+    padding: 10,
+    marginVertical: 5,
+    borderRadius: 25,
+    width: '80%',
+  },
+  answerText: {
+    fontSize: 16,
+    color: 'black',
+    textAlign: 'center',
   },
 })
