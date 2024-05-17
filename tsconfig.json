@@ -11,6 +11,8 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "app/home/_layout.jsx"
+    "app/home/_layout.jsx",
+    "app/quiz.tsx",
+    "app/_layout.jsx"
   ]
 }

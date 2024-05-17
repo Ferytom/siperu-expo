@@ -59,7 +59,7 @@ export default function RegisterForm() {
     } catch (error) {
       console.error(error)
     }
-    router.replace('/login')
+    return
   }
 
   return (
@@ -130,13 +130,13 @@ export default function RegisterForm() {
 
       <TouchableOpacity
         style={styles.circleButtonLeft}
-        onPress={() => navigation.navigate('Register')}>
+        onPress={() => router.navigate('Register')}>
         <Text style={styles.circleButtonText}>?</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.circleButtonRight}
-        onPress={() => navigation.navigate('Register')}>
+        onPress={() => router.navigate('Register')}>
         <Icon name='multitrack-audio' size={24} color='#000' />
       </TouchableOpacity>
     </LinearGradient>

@@ -11,8 +11,9 @@ import {
 import { LinearGradient } from 'expo-linear-gradient'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { useSession } from '../hooks/authContext'
+import { router } from 'expo-router'
 
-export default function LoginScreen({ navigation }) {
+export default function LoginScreen() {
   const [isLoading, setIsLoading] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -92,13 +93,13 @@ export default function LoginScreen({ navigation }) {
 
       <TouchableOpacity
         style={styles.circleButtonLeft}
-        onPress={() => navigation.navigate('Register')}>
+        onPress={() => router.navigate('Register')}>
         <Text style={styles.circleButtonText}>?</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.circleButtonRight}
-        onPress={() => navigation.navigate('Register')}>
+        onPress={() => router.navigate('Register')}>
         <Icon name='multitrack-audio' size={24} color='#000' />
       </TouchableOpacity>
     </LinearGradient>

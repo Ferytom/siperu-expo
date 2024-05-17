@@ -13,10 +13,10 @@ import { questions } from '../constants/Questions'
 
 export default function QuizScreen() {
   const router = useRouter()
-  const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [answers, setAnswers] = useState([])
+  const [currentQuestion, setCurrentQuestion] = useState<number>(0)
+  const [answers, setAnswers] = useState<string[]>([])
 
-  const handleAnswer = (answerId) => {
+  const handleAnswer = (answerId: string) => {
     setAnswers([...answers, answerId])
 
     const nextQuestion = currentQuestion + 1
@@ -28,8 +28,8 @@ export default function QuizScreen() {
     }
   }
 
-  const calculateResult = (answers) => {
-    const count = { a: 0, b: 0, c: 0 }
+  const calculateResult = (answers: string[]) => {
+    const count: { [key: string]: number } = { a: 0, b: 0, c: 0 }
 
     answers.forEach((answer) => {
       count[answer] += 1

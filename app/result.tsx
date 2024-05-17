@@ -1,19 +1,23 @@
 import React from 'react'
 import {
-  View,
   Text,
   Image,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native'
 import { useRouter, useLocalSearchParams } from 'expo-router'
+import { LinearGradient } from 'expo-linear-gradient'
 
 export default function ResultScreen() {
   const router = useRouter()
   const { result } = useLocalSearchParams()
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={['#0F2BAC', '#22006C']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={styles.container}>
       <Image
         source={require('../assets/images/siperu.png')}
         style={styles.logo}
@@ -30,7 +34,7 @@ export default function ResultScreen() {
         onPress={() => router.replace('/login')}>
         <Text style={styles.navButtonText}>Go Home</Text>
       </TouchableOpacity>
-    </View>
+    </LinearGradient>
   )
 }
 
