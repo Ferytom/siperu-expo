@@ -31,7 +31,7 @@ export default function ResultScreen() {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.navButton}
-        onPress={() => router.replace('/login')}>
+        onPress={() => router.replace('/register')}>
         <Text style={styles.navButtonText}>Go Home</Text>
       </TouchableOpacity>
     </LinearGradient>

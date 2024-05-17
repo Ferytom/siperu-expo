@@ -54,6 +54,10 @@ export default function RegisterForm() {
       if (getData.status === 200) {
         const results = await getData.json()
         console.log(results)
+        setEmail('')
+        setFirstName('')
+        setLastName('')
+        setPassword('')
         router.push('/quiz')
       }
     } catch (error) {
