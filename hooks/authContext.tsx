@@ -2,6 +2,7 @@ import React from 'react'
 import { useStorageState } from './useStorageState'
 import { router } from 'expo-router'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import Api from '@/constants/Api'
 
 const AuthContext = React.createContext<{
   signIn: (email: string, password: string) => void
@@ -44,24 +45,24 @@ export function SessionProvider(props: React.PropsWithChildren) {
           }
 
           try {
-            const getData = await fetch(
-              'https://donactive.vercel.app/api/auth/login',
-              {
-                method: 'POST',
-                headers: {
-                  Accept: 'application/json',
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  email,
-                  password,
-                }),
-              }
-            )
+            const getData = await fetch(`${Api}auth/login`, {
+              method: 'POST',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                email,
+                password,
+              }),
+            })
             if (getData.status === 200) {
               const results = await getData.json()
               setSession(results.data.token)
-              await AsyncStorage.setItem('name', results.data.name)
+              await AsyncStorage.setItem(
+                'name',
+                results.data.firstName
+              )
               await AsyncStorage.setItem('email', results.data.email)
               router.replace('/')
             }

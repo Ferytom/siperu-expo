@@ -11,6 +11,7 @@ import {
 import { LinearGradient } from 'expo-linear-gradient'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { router } from 'expo-router'
+import Api from '@/constants/Api'
 
 export default function RegisterForm() {
   const [isLoading, setIsLoading] = useState(false)
@@ -35,22 +36,19 @@ export default function RegisterForm() {
     }
 
     try {
-      const getData = await fetch(
-        'https://donactive.vercel.app/api/auth/register',
-        {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            firstName,
-            lastName,
-            email,
-            password,
-          }),
-        }
-      )
+      const getData = await fetch(`${Api}auth/register`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          password,
+        }),
+      })
       if (getData.status === 200) {
         const results = await getData.json()
         console.log(results)

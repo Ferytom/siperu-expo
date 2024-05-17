@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image } from 'react-native'
 
-export function LogoTitle() {
+export function LogoTitle(): JSX.Element {
   return (
     <Image
       style={{ width: 50, height: 50, marginTop: 10 }}

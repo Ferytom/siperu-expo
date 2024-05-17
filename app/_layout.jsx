@@ -5,7 +5,7 @@
 // } from '@react-navigation/native'
 import { SessionProvider } from '../hooks/authContext'
 import { useFonts } from 'expo-font'
-import { Slot, Stack } from 'expo-router'
+import { Stack } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
 import { useEffect } from 'react'
 import 'react-native-reanimated'
@@ -40,7 +40,6 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen
           name='register'
-          // component={Register}
           options={{
             headerTransparent: true,
             title: '',
@@ -51,7 +50,6 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name='registerForm'
-          // component={Register}
           options={{
             headerTransparent: true,
             title: '',
@@ -62,7 +60,6 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name='quiz'
-          // component={Register}
           options={{
             headerTransparent: true,
             title: '',
@@ -73,7 +70,6 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name='result'
-          // component={Register}
           options={{
             headerTransparent: true,
             title: '',
@@ -84,7 +80,6 @@ export default function RootLayout() {
         />
         <Stack.Screen
           name='login'
-          // component={Login}
           options={{
             headerTransparent: true,
             title: '',
